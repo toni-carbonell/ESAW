@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import managers.ManageUsers;
 import models.User;
 
 /**
@@ -39,14 +40,34 @@ public class RegisterController extends HttpServlet {
 	
 		   User user = new User();
 		   BeanUtils.populate(user, request.getParameterMap());
+		   ManageUsers manager = new ManageUsers();
 		
-		   if (user.isComplete()) {
+		   if (manager.isComplete(user) && !manager.mailExists(user.getMail())) { //if the mail doesn't exist yet
 			   
-			   System.out.println(" user ok, forwarding to ViewLoginForm");
-			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
-			   dispatcher.forward(request, response);
+			   
+			   	user.setSalt(); //Setting the users salt
+				user.setHashtag(); //Setting the users hashtag!
+				System.out.println("Model is complete");
+				System.out.println(user.getUser()+ user.getMail() + user.encriptPwd() + user.getGender() + user.getSalt() + user.getHashtag());
+				
+				//Adding the user
+				manager.addUser(user.getUser(), user.getMail(), user.encriptPwd(), user.getGender(), user.getSalt(), user.getHashtag());
+				if (manager.getSqlException() == false) {
+					manager.finalize();
+					System.out.println(" user ok, registering and forwarding to ViewLoginForm");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
+					dispatcher.forward(request, response);
+				}
+				
 		   
 		   } 
+		   else if (manager.isComplete(user)) {
+			   System.out.println("Everything ok but mail already exists");
+			   manager.activateMailExists(); //activating mail exists property that will go to the jsp for error handling
+			   request.setAttribute("manager", manager);
+			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
+			   dispatcher.forward(request, response);
+		   }
 		   else {
 		
 			   System.out.println(" forwarding to ViewRegisterForm");

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import managers.ManageUsers;
+import models.User;
+import utils.MD5;
 
 /**
  * Servlet implementation class MainController
@@ -21,7 +26,7 @@ public class MainController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public MainController() {
-        super();
+        super(); 
     }
 
 	/**
@@ -29,9 +34,12 @@ public class MainController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false); //we only instantiate the object if the session was created before!!
+		//la cuestión es dónde crear la sesión? ... Entiendo que al hacer el Login ;) Eso será en el LoginController
+		//En el LoginController si el mail y contraseña son correctos crearemos una sesión con el mail 
+
 		
-		if (session==null || session.getAttribute("user")==null) {
+		if (session==null || session.getAttribute("mail")==null) { //en la sesión pondremos el atributo mail
 			System.out.println("MainController: NO active session has been found,");
 			request.setAttribute("menu","ViewMenuNotLogged.jsp");
 			request.setAttribute("content","ViewRegisterForm.jsp");
@@ -42,8 +50,10 @@ public class MainController extends HttpServlet {
 			request.setAttribute("content","ViewLoginDone.jsp");
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);	}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); //se ejecuta el index, el request tendrá dentro otras páginas web por si las quieres llamar y cargar desde el index
+		dispatcher.forward(request, response);	
+		
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

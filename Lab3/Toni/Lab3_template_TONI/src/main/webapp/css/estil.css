@@ -1,0 +1,202 @@
+div {
+  border: 2px solid;
+  padding: 20px; 
+  width: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+input:valid {
+	border-left: 4px solid green;
+}
+input:invalid {
+	border-left: 4px solid red;
+}
+
+body {
+    background-image: url('background.png');
+    background-color: #aacaac;
+}
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+	border-left: 4px solid green;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+	border-left: 4px solid red;
+}
+
+.server-errors {
+  color:red;
+}
+
+.parsley-errors-list {
+  margin: 0 0 0 0;
+  padding: 0 0 0 10px;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+  color: red;
+  display:inline-block;
+}
+.parsley-errors-list.filled {
+  opacity: 1;
+  display:inline-block;
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input[type=text]:invalid {
+	border-left: 4px solid red;
+	box-shadow: 0px 0px 14px red;
+}
+
+input[type=text]:valid {
+	border-left: 4px solid #00ffff;
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=email], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input[type=email]:invalid {
+	border-left: 4px solid red;
+	box-shadow: 0px 0px 14px red;
+}
+
+.wrongMail {
+	border-left: 4px solid red;
+	box-shadow: 0px 0px 14px red;
+	color: rgb(0, 64, 128);
+	background: #ff6e6e;
+	border-left: 4px solid red;
+}
+
+input[type=email]:valid {
+	border-left: 4px solid #00ffff;
+}
+
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=password], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input[type=password]:invalid {
+	border-left: 4px solid red;
+	box-shadow: 0px 0px 14px red;
+}
+
+input[type=password]:valid {
+	border-left: 4px solid #00ffff;
+}
+
+
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #1b7d9e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #ff0000;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+    width: 400px;
+    background: #00bfbf;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: #baeeff;
+}
+
+.container .h4 {
+    width: 400px;
+    font-family: 'calibri';
+    color: #baeeff;
+}
+
+.controls {
+    width: 100%;
+    background: #baeeff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: black;
+}
+
+.welcome {
+    width: 400px;
+    background: #00bfbf;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: #440d8c;
+}
+
+.error {
+  width  : 100%;
+  padding: 0;
+
+  font-size: 80%;
+  color: rgb(0, 64, 128);
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0em;
+}
+
+.image {
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 20%;
+}
